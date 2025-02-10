@@ -147,8 +147,10 @@ class _HomeScreenState extends State<HomeScreen> {
             TextButton(
               onPressed: () async {
                 await AuthHelper.logout();
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                    (route) => false);
               },
               child: Text(
                 'Logout',
